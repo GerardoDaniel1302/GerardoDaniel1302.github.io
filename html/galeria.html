@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Galería</title>
+  <link rel="stylesheet" href="../css/estilo.css">
+  <style>
+    main {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .carrusel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      margin: 20px 0;
+    }
+
+    .carrusel img {
+      width: 100%;
+      display: none;
+      border-radius: 10px;
+    }
+
+    .carrusel img.active {
+      display: block;
+    }
+
+    .botones-carrusel {
+      margin-top: 10px;
+    }
+
+    .botones-carrusel button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      background-color: #175807;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .botones-carrusel button:hover {
+      background-color: #00a323;
+    }
+
+    .info-peninsula {
+      background-color: #f9f9f9;
+      padding: 20px;
+      margin-top: 30px;
+      border-radius: 10px;
+      text-align: justify;
+    }
+
+    .info-peninsula h2 {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Galería de la Península</h1>
+    <nav>
+        <ul>
+          <li><a href="yucatan.html">Yucatán</a></li>
+          <li><a href="campeche.html">Campeche</a></li>
+          <li><a href="quintanaroo.html">Quintana Roo</a></li>
+          <li><a href="galeria.html">Galería</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+  </header>
+  <main>
+    <section>
+      <h2>Imágenes representativas</h2>
+      <div class="carrusel">
+        <img src="../img/merida.jpg" alt="Mérida Yucatán" class="active">
+        <img src="../img/campeche.jpg" alt="Centro histórico de Campeche">
+        <img src="../img/cancun.jpg" alt="Playas de Cancún">
+        <img src="../img/chichen.jpg" alt="Chichén Itzá">
+        <img src="../img/bacalar.jpg" alt="Laguna de Bacalar">
+      </div>
+      <div class="botones-carrusel">
+        <button onclick="anterior()">Anterior</button>
+        <button onclick="siguiente()">Siguiente</button>
+      </div>
+    </section>
+
+    <section class="info-peninsula">
+      <h2>¿Sabías esto de la Península de Yucatán?</h2>
+      <p>
+        La península de Yucatán está conformada por tres estados: Campeche, Yucatán y Quintana Roo. Es una región rica en historia maya, biodiversidad y bellezas naturales. Además de sus playas cristalinas, selvas y cenotes, también es conocida por su deliciosa gastronomía, como la cochinita pibil, el pan de cazón y los mariscos del Caribe.
+      </p>
+      <p>
+        En su territorio se encuentran algunas de las zonas arqueológicas más importantes de México, como Chichén Itzá (una de las 7 maravillas del mundo moderno), Uxmal, Ek Balam y Calakmul. También cuenta con sitios naturales como la Laguna de Bacalar y la Reserva de la Biósfera de Sian Ka'an.
+      </p>
+    </section>
+    <br>
+    <br>
+    <br>
+    <br>
+  </main>
+
+  <footer>
+    <p><a href="../index.html" style="color: #ffffff;">Volver al inicio</a></p>
+  </footer>
+
+  <script>
+    let index = 0;
+    const imagenes = document.querySelectorAll('.carrusel img');
+
+    function mostrarImagen(i) {
+      imagenes.forEach((img, idx) => {
+        img.classList.toggle('active', idx === i);
+      });
+    }
+
+    function siguiente() {
+      index = (index + 1) % imagenes.length;
+      mostrarImagen(index);
+    }
+
+    function anterior() {
+      index = (index - 1 + imagenes.length) % imagenes.length;
+      mostrarImagen(index);
+    }
+    setInterval(siguiente, 5000);
+  </script>
+</body>
+</html>
+
